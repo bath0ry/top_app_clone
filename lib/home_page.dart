@@ -34,12 +34,14 @@ class HomePage extends StatelessWidget {
               icon: Icon(
                 Icons.notifications_none,
                 color: Color.fromARGB(255, 3, 224, 217),
+                size: 28,
               )),
           IconButton(
               onPressed: () {},
               icon: Icon(
                 Icons.help_outline,
                 color: Color.fromARGB(255, 3, 224, 217),
+                size: 28,
               )),
           SizedBox(width: 5)
         ],
