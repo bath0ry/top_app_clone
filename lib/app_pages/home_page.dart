@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:top_app_clone/app_pages/profile_page.dart';
+import 'package:top_app_clone/ticket_shop_button.dart';
+import 'package:top_app_clone/tickets_avaible_widgets.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,17 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _appBar(context),
-      body: SingleChildScrollView(
-          child: TextButton.icon(
-              onPressed: () {},
-              style: ButtonStyle(),
-              icon: const Icon(
-                Icons.qr_code,
-              ),
-              label: Text(
-                "UTILIZAR BILHETE",
-                style: TextStyle(),
-              ))),
+      body: Row(children: [TicketAvaibleWidgets(), TicketShop()]),
     );
   }
 
@@ -27,8 +19,7 @@ class HomePage extends StatelessWidget {
       title: Padding(
         padding:
             const EdgeInsets.only(left: 90, top: 80, bottom: 80, right: 50),
-        child: Image.network(
-            'https://whatsapp.boradetop.com.br/assets/images/bom/logo_top_preto.png'),
+        child: Image.network(''),
       ),
       leading: GestureDetector(
         onTap: () {
