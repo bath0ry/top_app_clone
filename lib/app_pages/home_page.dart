@@ -19,7 +19,6 @@ class HomePage extends StatelessWidget {
       title: Padding(
         padding:
             const EdgeInsets.only(left: 90, top: 80, bottom: 80, right: 50),
-        child: Image.network(''),
       ),
       leading: GestureDetector(
         onTap: () {
