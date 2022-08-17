@@ -14,28 +14,32 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const LoginCustomFormFieldWidget(
-                labelText: "CPF",
-                padding: EdgeInsets.all(30),
+                labelText: "Seu CPF",
+                padding: EdgeInsets.fromLTRB(30, 120, 30, 5),
                 maxLength: 11,
                 obscureText: false,
                 keyboardType: TextInputType.number,
+                fillColor: Color.fromARGB(255, 53, 53, 53),
               ),
               const LoginCustomFormFieldWidget(
-                labelText: "Password",
-                padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
+                labelText: "Sua senha",
+                padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
                 maxLength: 16,
                 obscureText: true,
                 keyboardType: TextInputType.text,
+                fillColor: Color.fromARGB(255, 53, 53, 53),
               ),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 33, top: 10),
+                  padding: const EdgeInsets.only(left: 33, top: 0),
                   child: GestureDetector(
                     onTap: () {},
-                    child: const Text(
-                      "Redefinir Senha",
-                    ),
+                    child: const Text("Esqueci a senha",
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                        )),
                   ),
                 ),
               ),
@@ -43,26 +47,97 @@ class LoginPage extends StatelessWidget {
                 height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.only(left: 50, right: 50),
                 child: ElevatedButton(
                   onPressed: () {},
-                  child: Text(
-                    "ENTRAR",
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 25, 25, 25),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600),
+                  child: Padding(
+                    padding: const EdgeInsets.all(13),
+                    child: Text(
+                      "ENTRAR",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600),
+                    ),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromARGB(255, 4, 247, 239),
+                      primary: Color.fromARGB(255, 0, 68, 66),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30))),
+                          borderRadius: BorderRadius.circular(7))),
                 ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 50, right: 50, top: 5),
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Sair",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  style: ElevatedButton.styleFrom(primary: Colors.white),
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                children: [
+                  IconsLoginPageWidgets(
+                      widgetIcon: Icons.qr_code_2, textIcons: 'BILHETES'),
+                  IconsLoginPageWidgets(
+                      widgetIcon: Icons.map, textIcons: 'MAPA DAS ESTAÇÕES'),
+                  IconsLoginPageWidgets(
+                      textIcons: 'FALE CONOSCO', widgetIcon: Icons.whatsapp)
+                ],
               )
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class IconsLoginPageWidgets extends StatelessWidget {
+  const IconsLoginPageWidgets({
+    Key? key,
+    required this.textIcons,
+    required this.widgetIcon,
+  }) : super(key: key);
+
+  final String textIcons;
+  final IconData widgetIcon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          width: 30,
+        ),
+        GestureDetector(
+          child: Column(
+            children: [
+              Icon(
+                widgetIcon,
+                color: Color.fromARGB(255, 3, 160, 155),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Text(
+                textIcons,
+                maxLines: 2,
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.w400),
+              )
+            ],
+          ),
+        )
+      ],
     );
   }
 }
@@ -75,31 +150,34 @@ class LoginCustomFormFieldWidget extends StatelessWidget {
     required this.maxLength,
     required this.obscureText,
     required this.keyboardType,
+    required this.fillColor,
   }) : super(key: key);
   final String labelText;
   final EdgeInsetsGeometry padding;
   final int maxLength;
   final bool obscureText;
   final TextInputType keyboardType;
+  final Color fillColor;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: padding,
-      child: TextField(
+      child: TextFormField(
         obscureText: obscureText,
         maxLength: maxLength,
         style: const TextStyle(
             color: Colors.black, fontSize: 17, fontWeight: FontWeight.w600),
         autocorrect: true,
         keyboardType: keyboardType,
-        autofocus: true,
+        autofocus: false,
         decoration: InputDecoration(
+            fillColor: fillColor,
             border: const OutlineInputBorder(),
             labelText: labelText,
             labelStyle: const TextStyle(
-                color: Color.fromARGB(255, 3, 224, 217),
-                fontSize: 20,
+                color: Color.fromARGB(255, 0, 68, 66),
+                fontSize: 15,
                 fontWeight: FontWeight.w900)),
       ),
     );
