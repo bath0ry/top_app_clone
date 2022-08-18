@@ -50,8 +50,12 @@ class LoginPage extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 50, right: 50),
                 child: ElevatedButton(
                   onPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.all(13),
+                  style: ElevatedButton.styleFrom(
+                      primary: const Color.fromARGB(255, 0, 68, 66),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(7))),
+                  child: const Padding(
+                    padding: EdgeInsets.all(13),
                     child: Text(
                       "ENTRAR",
                       style: TextStyle(
@@ -60,31 +64,27 @@ class LoginPage extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                      primary: Color.fromARGB(255, 0, 68, 66),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(7))),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 50, right: 50, top: 5),
                 child: TextButton(
                   onPressed: () {},
-                  child: Text(
+                  style: ElevatedButton.styleFrom(primary: Colors.white),
+                  child: const Text(
                     "Sair",
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 15,
                         fontWeight: FontWeight.w500),
                   ),
-                  style: ElevatedButton.styleFrom(primary: Colors.white),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
-                children: [
+                children: const [
                   IconsLoginPageWidgets(
                       widgetIcon: Icons.qr_code_2, textIcons: 'BILHETES'),
                   IconsLoginPageWidgets(
@@ -115,7 +115,7 @@ class IconsLoginPageWidgets extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(
+        const SizedBox(
           width: 30,
         ),
         GestureDetector(
@@ -123,16 +123,16 @@ class IconsLoginPageWidgets extends StatelessWidget {
             children: [
               Icon(
                 widgetIcon,
-                color: Color.fromARGB(255, 3, 160, 155),
+                color: const Color.fromARGB(255, 3, 160, 155),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               Text(
                 textIcons,
                 maxLines: 2,
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.w400),
+                style: const TextStyle(
+                    color: Colors.black, fontWeight: FontWeight.w400),
               )
             ],
           ),
