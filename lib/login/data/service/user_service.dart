@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:top_app_clone/home/data/model/user_model.dart';
+import 'package:top_app_clone/login/data/model/user_model.dart';
 
 class UserService {
   final Dio dio;
