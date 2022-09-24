@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:top_app_clone/home/pages/profile_page.dart';
+import 'package:top_app_clone/home/view/pages/profile_page.dart';
+
 
 import 'package:top_app_clone/ticket_shop_button.dart';
 import 'package:top_app_clone/tickets_avaible_widgets.dart';
