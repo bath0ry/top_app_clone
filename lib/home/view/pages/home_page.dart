@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:top_app_clone/home/view/pages/profile_page.dart';
+import 'package:top_app_clone/pages/view/profile_page.dart';
 
-
-import 'package:top_app_clone/ticket_shop_button.dart';
-import 'package:top_app_clone/tickets_avaible_widgets.dart';
+import 'package:top_app_clone/components/ticket_shop_button.dart';
+import 'package:top_app_clone/components/tickets_avaible_widgets.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
