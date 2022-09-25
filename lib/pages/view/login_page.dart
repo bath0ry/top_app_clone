@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:top_app_clone/components/icons_login_page.dart';
+import 'package:top_app_clone/components/login_widgets.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -13,6 +15,8 @@ class LoginPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image.asset(
+                  'WhatsApp_Image_2022-09-24_at_20.50.08-removebg-preview.png'),
               const LoginCustomFormFieldWidget(
                 labelText: "Seu CPF",
                 padding: EdgeInsets.fromLTRB(30, 120, 30, 5),
@@ -96,89 +100,6 @@ class LoginPage extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class IconsLoginPageWidgets extends StatelessWidget {
-  const IconsLoginPageWidgets({
-    Key? key,
-    required this.textIcons,
-    required this.widgetIcon,
-  }) : super(key: key);
-
-  final String textIcons;
-  final IconData widgetIcon;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const SizedBox(
-          width: 30,
-        ),
-        GestureDetector(
-          child: Column(
-            children: [
-              Icon(
-                widgetIcon,
-                color: const Color.fromARGB(255, 3, 160, 155),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Text(
-                textIcons,
-                maxLines: 2,
-                style: const TextStyle(
-                    color: Colors.black, fontWeight: FontWeight.w400),
-              )
-            ],
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class LoginCustomFormFieldWidget extends StatelessWidget {
-  const LoginCustomFormFieldWidget({
-    Key? key,
-    required this.labelText,
-    required this.padding,
-    required this.maxLength,
-    required this.obscureText,
-    required this.keyboardType,
-    required this.fillColor,
-  }) : super(key: key);
-  final String labelText;
-  final EdgeInsetsGeometry padding;
-  final int maxLength;
-  final bool obscureText;
-  final TextInputType keyboardType;
-  final Color fillColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: padding,
-      child: TextFormField(
-        obscureText: obscureText,
-        maxLength: maxLength,
-        style: const TextStyle(
-            color: Colors.black, fontSize: 17, fontWeight: FontWeight.w600),
-        autocorrect: true,
-        keyboardType: keyboardType,
-        autofocus: false,
-        decoration: InputDecoration(
-            fillColor: fillColor,
-            border: const OutlineInputBorder(),
-            labelText: labelText,
-            labelStyle: const TextStyle(
-                color: Color.fromARGB(255, 0, 68, 66),
-                fontSize: 15,
-                fontWeight: FontWeight.w900)),
       ),
     );
   }
