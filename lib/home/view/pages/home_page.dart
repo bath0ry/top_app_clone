@@ -18,8 +18,9 @@ class HomePage extends StatelessWidget {
   AppBar _appBar(BuildContext context) {
     return AppBar(
       title: Padding(
-        padding:
-            const EdgeInsets.only(left: 90, top: 80, bottom: 80, right: 50),
+        padding: const EdgeInsets.fromLTRB(70, 30, 30, 30),
+        child: Image.asset(
+            'assets/images/WhatsApp_Image_2022-09-24_at_22.52.37-removebg-preview.png'),
       ),
       leading: GestureDetector(
         onTap: () {

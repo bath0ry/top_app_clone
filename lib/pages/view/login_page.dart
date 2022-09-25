@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:top_app_clone/components/icons_login_page.dart';
 import 'package:top_app_clone/components/login_widgets.dart';
+import 'package:top_app_clone/home/view/pages/home_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -53,7 +54,13 @@ class LoginPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 50, right: 50),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: ((context) => HomePage()),
+                    ),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                     primary: const Color.fromARGB(255, 0, 68, 66),
                     shape: RoundedRectangleBorder(
