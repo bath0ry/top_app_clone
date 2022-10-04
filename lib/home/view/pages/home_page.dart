@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:top_app_clone/pages/view/profile_page.dart';
 
-import 'package:top_app_clone/components/ticket_shop_button.dart';
+import 'package:top_app_clone/components/ticket_shop_buttons.dart';
 import 'package:top_app_clone/components/tickets_avaible_widgets.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,7 +11,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _appBar(context),
-      body: Row(children: [TicketAvaibleWidgets(), TicketShop()]),
+      body: Column(children: [
+        TicketAvaibleWidgets(),
+        TicketShop(),
+      ]),
     );
   }
 

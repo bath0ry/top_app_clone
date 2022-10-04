@@ -6,8 +6,7 @@ class TicketAvaibleWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+    return Row(
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
