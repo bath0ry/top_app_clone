@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
       appBar: _appBar(context),
       body: Column(children: [
         TicketAvaibleWidgets(),
+        SizedBox(),
         TicketShop(),
       ]),
     );
