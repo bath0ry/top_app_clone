@@ -15,6 +15,7 @@ class HomePage extends StatelessWidget {
         TicketAvaibleWidgets(),
         SizedBox(),
         TicketShop(),
+        
       ]),
     );
   }
