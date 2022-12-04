@@ -15,7 +15,7 @@ class IconsLoginPageWidgets extends StatelessWidget {
     return Row(
       children: [
         const SizedBox(
-          width: 30,
+          width: 22,
         ),
         GestureDetector(
           child: Column(

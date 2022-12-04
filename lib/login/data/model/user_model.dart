@@ -1,19 +1,19 @@
-class User {
-  User({
-    required this.email,
+class UserModel {
+  UserModel({
+    required this.cpf,
     required this.senha,
   });
 
-  final String email;
-  final String senha;
+  String cpf;
+  String senha;
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
-        email: json["email"],
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+        cpf: json["cpf"],
         senha: json["senha"],
       );
 
   Map<String, dynamic> toJson() => {
-        "email": email,
+        "cpf": cpf,
         "senha": senha,
       };
 }
