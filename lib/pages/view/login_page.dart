@@ -17,6 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController controllerSenha = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+  int lenght = 11;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                       return null;
                     },
                     controller: controllerCpf,
-                    maxLength: 11,
+                    maxLength: lenght,
                     style: const TextStyle(
                         color: Colors.black,
                         fontSize: 17,

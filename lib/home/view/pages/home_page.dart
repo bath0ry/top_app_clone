@@ -9,12 +9,45 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.qr_code,
+                color: Color.fromARGB(255, 3, 160, 155),
+              ),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.directions_subway,
+                color: Color.fromARGB(255, 3, 160, 155),
+              ),
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
       backgroundColor: Color.fromARGB(255, 226, 226, 226),
       appBar: _appBar(context),
-      body: Column(children: [
-        TicketAvaibleWidgets(),
-        SizedBox(),
-      ]),
+      body: SingleChildScrollView(
+        child: Column(children: [
+          TicketAvaibleWidgets(),
+          SizedBox(
+            height: 30,
+          ),
+          Text(
+            'HISTÓRICO',
+            style: TextStyle(fontWeight: FontWeight.w400),
+          ),
+          SizedBox(
+            height: 330,
+          ),
+          _listButton()
+        ]),
+      ),
     );
   }
 
@@ -59,4 +92,85 @@ class HomePage extends StatelessWidget {
       backgroundColor: Color.fromARGB(255, 63, 62, 62),
     );
   }
+}
+
+class UtilsListHomeWidget extends StatelessWidget {
+  const UtilsListHomeWidget({
+    Key? key,
+    required this.textButtonWidget,
+    required this.iconButton,
+  }) : super(key: key);
+  final String textButtonWidget;
+  final IconData iconButton;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: Color.fromARGB(255, 3, 160, 155),
+          borderRadius: BorderRadius.circular(10)),
+      width: 100,
+      height: 95,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 12),
+            child: Icon(
+              iconButton,
+              color: Color.fromARGB(255, 83, 233, 225),
+              size: 30,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Text(
+              textButtonWidget,
+              style: TextStyle(
+                  color: Color.fromARGB(255, 241, 241, 241),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+Widget _listButton() {
+  return SizedBox(
+    height: 120,
+    child: ListView(
+      scrollDirection: Axis.horizontal,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 15, top: 8, bottom: 8),
+          child: UtilsListHomeWidget(
+            textButtonWidget: 'UTILIZAR\nBILHETE',
+            iconButton: Icons.qr_code,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8, top: 8, bottom: 8),
+          child: UtilsListHomeWidget(
+            textButtonWidget: 'UTILIZAR\nBILHETE',
+            iconButton: Icons.add,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8, top: 8, bottom: 8),
+          child: UtilsListHomeWidget(
+            textButtonWidget: 'UTILIZAR\nBILHETE',
+            iconButton: Icons.wallet,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8, top: 8, bottom: 8, right: 8),
+          child: UtilsListHomeWidget(
+            textButtonWidget: 'UTILIZAR\nBILHETE',
+            iconButton: Icons.map,
+          ),
+        ),
+      ],
+    ),
+  );
 }

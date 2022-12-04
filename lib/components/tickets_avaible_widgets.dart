@@ -121,16 +121,6 @@ class TicketAvaibleWidgets extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(
-          height: 30,
-        ),
-        Text(
-          'HISTÓRICO',
-          style: TextStyle(fontWeight: FontWeight.w400),
-        ),
-        SizedBox(
-          height: 100,
-        )
       ],
     );
   }
