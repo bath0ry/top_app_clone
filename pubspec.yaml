@@ -63,6 +63,7 @@ flutter:
   assets:
     - assets/images/WhatsApp_Image_2022-09-24_at_20.50.08-removebg-preview.png
     - assets/images/WhatsApp_Image_2022-09-24_at_22.52.37-removebg-preview.png
+    - assets/images/qr.jpeg
   
 
   # An image asset can refer to one or more resolution-specific "variants", see

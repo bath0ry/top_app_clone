@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:top_app_clone/pages/view/profile_page.dart';
 
-import 'package:top_app_clone/components/ticket_shop_buttons.dart';
 import 'package:top_app_clone/components/tickets_avaible_widgets.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,12 +9,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 226, 226, 226),
       appBar: _appBar(context),
       body: Column(children: [
         TicketAvaibleWidgets(),
         SizedBox(),
-        TicketShop(),
-        
       ]),
     );
   }
