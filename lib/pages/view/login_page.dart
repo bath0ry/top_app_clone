@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:top_app_clone/components/icons_login_page.dart';
 
 import 'package:top_app_clone/home/view/pages/home_page.dart';
@@ -16,7 +17,6 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController controllerSenha = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
-  int lenght = 11;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                       return null;
                     },
                     controller: controllerCpf,
-                    maxLength: lenght,
+                    maxLength: 11,
                     style: const TextStyle(
                         color: Colors.black,
                         fontSize: 17,
