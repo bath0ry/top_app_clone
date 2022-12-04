@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                   'assets/images/WhatsApp_Image_2022-09-24_at_20.50.08-removebg-preview.png',
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(30, 30, 30, 5),
+                  padding: const EdgeInsets.fromLTRB(30, 30, 30, 5),
                   child: TextFormField(
                     validator: (String? value) {
                       if (value!.isEmpty) {
