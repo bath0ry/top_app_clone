@@ -141,30 +141,30 @@ Widget _listButton() {
     height: 120,
     child: ListView(
       scrollDirection: Axis.horizontal,
-      children: [
+      children: const [
         Padding(
-          padding: const EdgeInsets.only(left: 15, top: 8, bottom: 8),
+          padding:  EdgeInsets.only(left: 15, top: 8, bottom: 8),
           child: UtilsListHomeWidget(
             textButtonWidget: 'UTILIZAR\nBILHETE',
             iconButton: Icons.qr_code,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8, top: 8, bottom: 8),
+          padding:  EdgeInsets.only(left: 8, top: 8, bottom: 8),
           child: UtilsListHomeWidget(
             textButtonWidget: 'UTILIZAR\nBILHETE',
             iconButton: Icons.add,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8, top: 8, bottom: 8),
+          padding:  EdgeInsets.only(left: 8, top: 8, bottom: 8),
           child: UtilsListHomeWidget(
             textButtonWidget: 'UTILIZAR\nBILHETE',
             iconButton: Icons.wallet,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8, top: 8, bottom: 8, right: 8),
+          padding:  EdgeInsets.only(left: 8, top: 8, bottom: 8, right: 8),
           child: UtilsListHomeWidget(
             textButtonWidget: 'UTILIZAR\nBILHETE',
             iconButton: Icons.map,

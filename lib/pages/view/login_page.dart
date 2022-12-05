@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(30, 30, 30, 5),
                   child: TextFormField(
-                    validator: (String? value) {
+                    validator: (value) {
                       if (value!.isEmpty) {
                         return 'Insira um CPF válido';
                       }
