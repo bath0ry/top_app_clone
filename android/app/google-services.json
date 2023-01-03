@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "69415599847",
+    "project_id": "authtop-33ebc",
+    "storage_bucket": "authtop-33ebc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69415599847:android:565655b5a08261ba39ec42",
+        "android_client_info": {
+          "package_name": "com.example.top_app_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "69415599847-qavn31kmg7fl26s3dlcugr67csk8amo5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD48lbJrODDux8zLgo2BABUXv5Fup8KpKg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "69415599847-qavn31kmg7fl26s3dlcugr67csk8amo5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
