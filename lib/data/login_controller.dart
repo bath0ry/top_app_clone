@@ -26,7 +26,7 @@ class LoginController {
       isLoading = true;
       onUpdate();
       final response = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: cpf!, password: password!);
+          .signInWithEmailAndPassword(email: cpf, password: password);
       isLoading = false;
       onUpdate();
       if (response.user != null) {
@@ -34,29 +34,28 @@ class LoginController {
       }
     } catch (e) {
       hasError =
-          'Não foi possível fazer login. Verifique se seu CPF ou Senha está correto';
+          'Não foi possivel efetuar login. Verifique seu CPF ou Senha se estão corretos';
     }
+  }
 
-    bool validiate() {
-      final form = formKey.currentState!;
-      if (form.validate()) {
-        form.save();
-        return true;
-      }
-      return false;
-    }
-
-    String? validateCpf(String? cpf) => cpf != null && cpf.length == 11
-        ? null
-        : 'O CPF é inválido. Digite sem pontos e traços';
-    String? validatePassword(String? password) =>
-        password != null && password.length >= 6
-            ? null
-            : 'A senha precisa ter no minimo 6 caractéres';
-
-    Future<bool> apiLogin(
-        {required String cpf, required String password}) async {
+  bool validiate() {
+    final form = formKey.currentState!;
+    if (form.validate()) {
+      form.save();
       return true;
     }
+    return false;
+  }
+
+  String? validateCpf(String? cpf) => cpf != null && cpf.length == 11
+      ? null
+      : 'O CPF é inválido. Digite sem pontos e traços';
+  String? validatePassword(String? password) =>
+      password != null && password.length >= 6
+          ? null
+          : 'A senha precisa ter no minimo 6 caractéres';
+
+  Future<bool> apiLogin({required String cpf, required String password}) async {
+    return true;
   }
 }
