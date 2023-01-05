@@ -35,7 +35,7 @@ class LoginController {
     } catch (e) {
       isLoading = false;
       hasError =
-          'Não foi possivel efetuar login.\nVerifique seu email ou Senha se estão corretos.';
+          'Não foi possivel efetuar login.\nVerifique seu email ou senha se estão corretos.';
     }
   }
 
