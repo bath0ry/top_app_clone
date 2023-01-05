@@ -13,6 +13,9 @@ class TicketAvaibleWidgets extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
+                width: 100,
+                height: 135,
+                color: const Color.fromARGB(255, 255, 255, 255),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 5),
                   child: Image.asset(
@@ -21,9 +24,6 @@ class TicketAvaibleWidgets extends StatelessWidget {
                     alignment: Alignment.topCenter,
                   ),
                 ),
-                width: 100,
-                height: 135,
-                color: Color.fromARGB(255, 255, 255, 255),
               ),
             ),
             Column(
@@ -31,11 +31,21 @@ class TicketAvaibleWidgets extends StatelessWidget {
                 GestureDetector(
                   onTap: () {},
                   child: Container(
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(
+                          255,
+                          255,
+                          255,
+                          255,
+                        ),
+                        borderRadius: BorderRadius.circular(10)),
+                    height: 60,
+                    width: 250,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         Padding(
-                          padding: const EdgeInsets.only(left: 20),
+                          padding: EdgeInsets.only(left: 20),
                           child: Text(
                             'CPTM / METRÔ',
                             style: TextStyle(
@@ -50,7 +60,7 @@ class TicketAvaibleWidgets extends StatelessWidget {
                               color: Color.fromARGB(90, 3, 160, 155)),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 20),
+                          padding: EdgeInsets.only(right: 20),
                           child: Text(
                             '0',
                             style: TextStyle(
@@ -60,29 +70,24 @@ class TicketAvaibleWidgets extends StatelessWidget {
                         ),
                       ],
                     ),
-                    decoration: BoxDecoration(
-                        color: Color.fromARGB(
-                          255,
-                          255,
-                          255,
-                          255,
-                        ),
-                        borderRadius: BorderRadius.circular(10)),
-                    height: 60,
-                    width: 250,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 GestureDetector(
                   onTap: () {},
                   child: Container(
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        borderRadius: BorderRadius.circular(10)),
+                    height: 60,
+                    width: 250,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         Padding(
-                          padding: const EdgeInsets.only(left: 20),
+                          padding: EdgeInsets.only(left: 20),
                           child: Text(
                             'ÔNIBUS',
                             style: TextStyle(
@@ -91,7 +96,7 @@ class TicketAvaibleWidgets extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 55),
+                          padding: EdgeInsets.only(left: 55),
                           child: Text(
                             'R\$',
                             style: TextStyle(
@@ -100,7 +105,7 @@ class TicketAvaibleWidgets extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 10),
+                          padding: EdgeInsets.only(right: 10),
                           child: Text(
                             '0,00',
                             style: TextStyle(
@@ -110,11 +115,6 @@ class TicketAvaibleWidgets extends StatelessWidget {
                         ),
                       ],
                     ),
-                    decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        borderRadius: BorderRadius.circular(10)),
-                    height: 60,
-                    width: 250,
                   ),
                 )
               ],

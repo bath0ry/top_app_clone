@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:top_app_clone/components/icons_login_page.dart';
+import 'package:top_app_clone/data/login_controller.dart';
 import 'package:top_app_clone/home/view/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,49 +14,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String? cpf = '';
-  String? password = '';
-  var isLoading = false;
-  final formKey = GlobalKey<FormState>();
-  void login({
-    required String cpf,
-    required String password,
-  }) async {
-    isLoading = true;
-    setState(() {});
-    final response = await apiLogin(cpf: cpf, password: password);
-    isLoading = false;
-    setState(() {});
-    if (response) {
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => const HomePage()),
-          (route) => false);
-    }
-  }
-
-  bool validiate() {
-    final form = formKey.currentState!;
-    if (form.validate()) {
-      form.save();
-      return true;
-    }
-    return false;
-  }
-
-  String? validateCpf(String? cpf) => cpf != null && cpf.length == 11
-      ? null
-      : 'O CPF é inválido. Digite sem pontos e traços';
-  String? validatePassword(String? password) =>
-      password != null && password.length >= 6
-          ? null
-          : 'A senha precisa ter no minimo 6 caractéres';
-
-  Future<bool> apiLogin({required String cpf, required String password}) async {
-    final response = await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: cpf, password: password);
-    return true;
-  }
-
+  late final controller = LoginController(
+    onSuccessLogin: () => Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const HomePage()),
+        (route) => false),
+    onUpdate: () {
+      setState(() {});
+    },
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
         color: Colors.white,
         child: SingleChildScrollView(
           child: Form(
-            key: formKey,
+            key: controller.formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -74,8 +40,8 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(30, 30, 30, 5),
                   child: TextFormField(
-                    validator: (value) => validateCpf(value),
-                    onSaved: (value) => cpf = value,
+                    validator: (value) => controller.validateCpf(value),
+                    onSaved: (value) => controller.cpf = value,
                     style: const TextStyle(
                         color: Colors.black,
                         fontSize: 17,
@@ -96,8 +62,8 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(30, 30, 30, 5),
                   child: TextFormField(
-                    validator: (value) => validatePassword(value),
-                    onSaved: (value) => password = value,
+                    validator: (value) => controller.validatePassword(value),
+                    onSaved: (value) => controller.password = value,
                     obscureText: true,
                     maxLength: 15,
                     style: const TextStyle(
@@ -133,7 +99,12 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                if (isLoading)
+                if (controller.hasError.isNotEmpty)
+                  Text(
+                    controller.hasError,
+                    style: TextStyle(fontSize: 15),
+                  ),
+                if (controller.isLoading)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     // ignore: prefer_const_literals_to_create_immutables
@@ -149,8 +120,10 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.only(left: 50, right: 50),
                     child: ElevatedButton(
                       onPressed: () {
-                        if (validiate()) {
-                          login(cpf: cpf!, password: password!);
+                        if (controller.validiate()) {
+                          controller.login(
+                              cpf: controller.cpf!,
+                              password: controller.password!);
                         }
                       },
                       style: ElevatedButton.styleFrom(

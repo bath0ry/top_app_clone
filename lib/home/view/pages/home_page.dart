@@ -14,14 +14,14 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.qr_code,
                 color: Color.fromARGB(255, 3, 160, 155),
               ),
               onPressed: () {},
             ),
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.directions_subway,
                 color: Color.fromARGB(255, 3, 160, 155),
               ),
@@ -30,19 +30,19 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      backgroundColor: Color.fromARGB(255, 226, 226, 226),
+      backgroundColor: const Color.fromARGB(255, 226, 226, 226),
       appBar: _appBar(context),
       body: SingleChildScrollView(
         child: Column(children: [
-          TicketAvaibleWidgets(),
-          SizedBox(
+          const TicketAvaibleWidgets(),
+          const SizedBox(
             height: 30,
           ),
-          Text(
+          const Text(
             'HISTÓRICO',
             style: TextStyle(fontWeight: FontWeight.w400),
           ),
-          SizedBox(
+          const SizedBox(
             height: 330,
           ),
           _listButton()
@@ -63,8 +63,8 @@ class HomePage extends StatelessWidget {
           Navigator.of(context).push(
               MaterialPageRoute(builder: ((context) => const ProfilePage())));
         },
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20),
+        child: const Padding(
+          padding: EdgeInsets.only(left: 20),
           child: Icon(
             Icons.person_outline,
             color: Color.fromARGB(255, 3, 224, 217),
@@ -75,21 +75,21 @@ class HomePage extends StatelessWidget {
       actions: [
         IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.notifications_none,
               color: Color.fromARGB(255, 3, 224, 217),
               size: 28,
             )),
         IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.help_outline,
               color: Color.fromARGB(255, 3, 224, 217),
               size: 28,
             )),
-        SizedBox(width: 5)
+        const SizedBox(width: 5)
       ],
-      backgroundColor: Color.fromARGB(255, 63, 62, 62),
+      backgroundColor: const Color.fromARGB(255, 63, 62, 62),
     );
   }
 }
@@ -106,7 +106,7 @@ class UtilsListHomeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Color.fromARGB(255, 3, 160, 155),
+          color: const Color.fromARGB(255, 3, 160, 155),
           borderRadius: BorderRadius.circular(10)),
       width: 100,
       height: 95,
@@ -116,7 +116,7 @@ class UtilsListHomeWidget extends StatelessWidget {
             padding: const EdgeInsets.only(top: 12),
             child: Icon(
               iconButton,
-              color: Color.fromARGB(255, 83, 233, 225),
+              color: const Color.fromARGB(255, 83, 233, 225),
               size: 30,
             ),
           ),
@@ -124,7 +124,7 @@ class UtilsListHomeWidget extends StatelessWidget {
             padding: const EdgeInsets.only(top: 10),
             child: Text(
               textButtonWidget,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Color.fromARGB(255, 241, 241, 241),
                   fontSize: 12,
                   fontWeight: FontWeight.w500),
@@ -143,28 +143,28 @@ Widget _listButton() {
       scrollDirection: Axis.horizontal,
       children: const [
         Padding(
-          padding:  EdgeInsets.only(left: 15, top: 8, bottom: 8),
+          padding: EdgeInsets.only(left: 15, top: 8, bottom: 8),
           child: UtilsListHomeWidget(
             textButtonWidget: 'UTILIZAR\nBILHETE',
             iconButton: Icons.qr_code,
           ),
         ),
         Padding(
-          padding:  EdgeInsets.only(left: 8, top: 8, bottom: 8),
+          padding: EdgeInsets.only(left: 8, top: 8, bottom: 8),
           child: UtilsListHomeWidget(
             textButtonWidget: 'UTILIZAR\nBILHETE',
             iconButton: Icons.add,
           ),
         ),
         Padding(
-          padding:  EdgeInsets.only(left: 8, top: 8, bottom: 8),
+          padding: EdgeInsets.only(left: 8, top: 8, bottom: 8),
           child: UtilsListHomeWidget(
             textButtonWidget: 'UTILIZAR\nBILHETE',
             iconButton: Icons.wallet,
           ),
         ),
         Padding(
-          padding:  EdgeInsets.only(left: 8, top: 8, bottom: 8, right: 8),
+          padding: EdgeInsets.only(left: 8, top: 8, bottom: 8, right: 8),
           child: UtilsListHomeWidget(
             textButtonWidget: 'UTILIZAR\nBILHETE',
             iconButton: Icons.map,
