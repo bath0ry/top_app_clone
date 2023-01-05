@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {});
     if (response) {
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => HomePage()),
+          MaterialPageRoute(builder: (context) => const HomePage()),
           (route) => false);
     }
   }
@@ -47,8 +47,9 @@ class _LoginPageState extends State<LoginPage> {
       password != null && password.length >= 6
           ? null
           : 'A senha precisa ter no minimo 6 caractéres';
+
   Future<bool> apiLogin({required String cpf, required String password}) async {
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
     return true;
   }
 
@@ -132,6 +133,7 @@ class _LoginPageState extends State<LoginPage> {
                 if (isLoading)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    // ignore: prefer_const_literals_to_create_immutables
                     children: [
                       const CircularProgressIndicator(
                         color: Color.fromARGB(255, 0, 68, 66),
