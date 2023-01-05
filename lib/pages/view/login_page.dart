@@ -40,19 +40,19 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(30, 30, 30, 5),
                   child: TextFormField(
-                    validator: (value) => controller.validateCpf(value),
-                    onSaved: (value) => controller.cpf = value,
+                    validator: (value) => controller.validateEmail(value),
+                    onSaved: (value) => controller.email = value,
                     style: const TextStyle(
                         color: Colors.black,
                         fontSize: 17,
                         fontWeight: FontWeight.w600),
                     autocorrect: true,
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.emailAddress,
                     autofocus: false,
                     decoration: const InputDecoration(
                         fillColor: Color.fromARGB(255, 53, 53, 53),
                         border: OutlineInputBorder(),
-                        labelText: 'Seu CPF',
+                        labelText: 'Seu Email',
                         labelStyle: TextStyle(
                             color: Color.fromARGB(255, 0, 68, 66),
                             fontSize: 15,
@@ -100,10 +100,18 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 if (controller.hasError.isNotEmpty)
-                  Text(
-                    controller.hasError,
-                    style: TextStyle(fontSize: 15),
+                  Center(
+                    child: Text(
+                      controller.hasError,
+                      style: TextStyle(
+                          fontSize: 13,
+                          color: Colors.red,
+                          fontWeight: FontWeight.w600),
+                    ),
                   ),
+                SizedBox(
+                  height: 15,
+                ),
                 if (controller.isLoading)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -122,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         if (controller.validiate()) {
                           controller.login(
-                              cpf: controller.cpf!,
+                              email: controller.email!,
                               password: controller.password!);
                         }
                       },

@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginController {
-  String? cpf = '';
+  String? email = '';
   String? password = '';
   var isLoading = false;
   final formKey = GlobalKey<FormState>();
@@ -19,22 +19,23 @@ class LoginController {
   LoginController({required this.onSuccessLogin, required this.onUpdate});
 
   void login({
-    required String cpf,
+    required String email,
     required String password,
   }) async {
     try {
       isLoading = true;
       onUpdate();
       final response = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: cpf, password: password);
+          .signInWithEmailAndPassword(email: email, password: password);
       isLoading = false;
       onUpdate();
       if (response.user != null) {
         onSuccessLogin();
       }
     } catch (e) {
+      isLoading = false;
       hasError =
-          'Não foi possivel efetuar login. Verifique seu CPF ou Senha se estão corretos';
+          'Não foi possivel efetuar login.\nVerifique seu email ou Senha se estão corretos.';
     }
   }
 
@@ -47,15 +48,15 @@ class LoginController {
     return false;
   }
 
-  String? validateCpf(String? cpf) => cpf != null && cpf.length == 11
-      ? null
-      : 'O CPF é inválido. Digite sem pontos e traços';
+  String? validateEmail(String? email) =>
+      email != null ? null : 'O email é inválido.';
   String? validatePassword(String? password) =>
       password != null && password.length >= 6
           ? null
           : 'A senha precisa ter no minimo 6 caractéres';
 
-  Future<bool> apiLogin({required String cpf, required String password}) async {
+  Future<bool> apiLogin(
+      {required String email, required String password}) async {
     return true;
   }
 }
