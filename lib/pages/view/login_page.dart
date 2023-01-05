@@ -1,10 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:top_app_clone/components/icons_login_page.dart';
 import 'package:top_app_clone/home/view/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key? key}) : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -49,7 +51,8 @@ class _LoginPageState extends State<LoginPage> {
           : 'A senha precisa ter no minimo 6 caractéres';
 
   Future<bool> apiLogin({required String cpf, required String password}) async {
-    await Future.delayed(const Duration(seconds: 3));
+    final response = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: cpf, password: password);
     return true;
   }
 
