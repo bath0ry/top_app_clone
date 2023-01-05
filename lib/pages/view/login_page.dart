@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:top_app_clone/components/icons_login_page.dart';
 
+import 'package:top_app_clone/components/icons_login_page.dart';
 import 'package:top_app_clone/home/view/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,21 +11,55 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController controllerCpf = TextEditingController();
+  String? cpf = '';
+  String? password = '';
+  var isLoading = false;
+  final formKey = GlobalKey<FormState>();
+  void login({
+    required String cpf,
+    required String password,
+  }) async {
+    isLoading = true;
+    setState(() {});
+    final response = await apiLogin(cpf: cpf, password: password);
+    isLoading = false;
+    setState(() {});
+    if (response) {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => HomePage()),
+          (route) => false);
+    }
+  }
 
-  TextEditingController controllerSenha = TextEditingController();
+  bool validiate() {
+    final form = formKey.currentState!;
+    if (form.validate()) {
+      form.save();
+      return true;
+    }
+    return false;
+  }
 
-  final _formKey = GlobalKey<FormState>();
-  int lenght = 11;
+  String? validateCpf(String? cpf) => cpf != null && cpf.length == 11
+      ? null
+      : 'O CPF é inválido. Digite sem pontos e traços';
+  String? validatePassword(String? password) =>
+      password != null && password.length >= 6
+          ? null
+          : 'A senha precisa ter no minimo 6 caractéres';
+  Future<bool> apiLogin({required String cpf, required String password}) async {
+    await Future.delayed(Duration(seconds: 3));
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Scaffold(
-        body: Container(
-          color: Colors.white,
-          child: SingleChildScrollView(
+    return Scaffold(
+      body: Container(
+        color: Colors.white,
+        child: SingleChildScrollView(
+          child: Form(
+            key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -37,14 +70,8 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(30, 30, 30, 5),
                   child: TextFormField(
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Insira um CPF válido';
-                      }
-                      return null;
-                    },
-                    controller: controllerCpf,
-                    maxLength: lenght,
+                    validator: (value) => validateCpf(value),
+                    onSaved: (value) => cpf = value,
                     style: const TextStyle(
                         color: Colors.black,
                         fontSize: 17,
@@ -52,45 +79,34 @@ class _LoginPageState extends State<LoginPage> {
                     autocorrect: true,
                     keyboardType: TextInputType.number,
                     autofocus: false,
-                    onChanged: (text) {
-                      setState(() {});
-                    },
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         fillColor: Color.fromARGB(255, 53, 53, 53),
-                        border: const OutlineInputBorder(),
+                        border: OutlineInputBorder(),
                         labelText: 'Seu CPF',
-                        labelStyle: const TextStyle(
+                        labelStyle: TextStyle(
                             color: Color.fromARGB(255, 0, 68, 66),
                             fontSize: 15,
                             fontWeight: FontWeight.w900)),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(30, 30, 30, 5),
+                  padding: const EdgeInsets.fromLTRB(30, 30, 30, 5),
                   child: TextFormField(
-                    onChanged: (text) {
-                      setState(() {});
-                    },
-                    validator: (String? value) {
-                      if (value != null && value.isEmpty) {
-                        return 'Senha errada ou inválida';
-                      }
-                      return null;
-                    },
-                    controller: controllerSenha,
+                    validator: (value) => validatePassword(value),
+                    onSaved: (value) => password = value,
                     obscureText: true,
-                    maxLength: 11,
+                    maxLength: 15,
                     style: const TextStyle(
                         color: Colors.black,
                         fontSize: 17,
                         fontWeight: FontWeight.w600),
                     keyboardType: TextInputType.text,
                     autofocus: false,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         fillColor: Color.fromARGB(255, 53, 53, 53),
-                        border: const OutlineInputBorder(),
+                        border: OutlineInputBorder(),
                         labelText: 'Sua Senha',
-                        labelStyle: const TextStyle(
+                        labelStyle: TextStyle(
                             color: Color.fromARGB(255, 0, 68, 66),
                             fontSize: 15,
                             fontWeight: FontWeight.w900)),
@@ -113,31 +129,41 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 50, right: 50),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) => HomePage()));
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 0, 68, 66),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(7))),
-                    child: const Padding(
-                      padding: EdgeInsets.all(13),
-                      child: Text(
-                        "ENTRAR",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontSize: 17,
-                            fontWeight: FontWeight.w600),
+                if (isLoading)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const CircularProgressIndicator(
+                        color: Color.fromARGB(255, 0, 68, 66),
+                        strokeWidth: 9,
+                      ),
+                    ],
+                  )
+                else
+                  Padding(
+                    padding: const EdgeInsets.only(left: 50, right: 50),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (validiate()) {
+                          login(cpf: cpf!, password: password!);
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(255, 0, 68, 66),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(7))),
+                      child: const Padding(
+                        padding: EdgeInsets.all(13),
+                        child: Text(
+                          "ENTRAR",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600),
+                        ),
                       ),
                     ),
                   ),
-                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 50, right: 50, top: 5),
                   child: TextButton(
