@@ -1,16 +1,15 @@
 # top_app_clone
 
-A new Flutter project.
+Projeto Flutter do aplicativo de transporte de metrô de São Paulo. 
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Clone do aplicativo TOP:
 
-A few resources to get you started if this is your first Flutter project:
+## Fotos e documentação
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Foi criado uma tela de login com autenticação do Firebase auth.
+![image](https://user-images.githubusercontent.com/110061019/212270302-85e0308f-a190-4427-aefb-104aad42e755.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Caso o login seja efetuado, ele leva para home page. Caso dê erro, ele retorna erro de login.
+![image](https://user-images.githubusercontent.com/110061019/212270409-450c96f8-225e-4cb0-8726-a1caac9fbda8.png)
